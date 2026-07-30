@@ -576,7 +576,7 @@ text-2xl
 font-bold
 ">
 
-📅 {date}
+{date.replaceAll("-", ".")}
 
 </h1>
 <div className="
@@ -592,7 +592,7 @@ shadow-sm
 font-bold
 ">
 
-🎹 학원 시간
+TIME
 
 </h2>
 
@@ -706,7 +706,7 @@ text-[#4DA3FF]
 
 >
 
-＋ 학원 시간 입력
+＋ 시간 입력
 
 </button>
 
@@ -718,7 +718,7 @@ text-[#4DA3FF]
 <div className="mt-6 space-y-3">
 
 <h2 className="font-bold">
-📌 일정
+SCHEDULE
 </h2>
 
 
@@ -1184,13 +1184,13 @@ text-lg
 font-bold
 ">
 
-🎹 학원 시간 입력
+TIME
 
 </h2>
 
 
 <p className="mt-5 text-sm text-gray-400">
-도착 시간
+START
 </p>
 
 
@@ -1230,7 +1230,7 @@ value={time}
 
 
 <p className="mt-4 text-sm text-gray-400">
-귀가 시간
+END
 </p>
 
 
