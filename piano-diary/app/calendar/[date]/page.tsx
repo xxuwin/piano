@@ -976,6 +976,20 @@ font-bold
 
 </p>
 
+{
+item.memo && (
+
+<p className="
+mt-3
+text-sm
+text-gray-500
+whitespace-pre-wrap
+">
+📝 {item.memo}
+</p>
+
+)
+}
 
 <button
 
@@ -1029,16 +1043,21 @@ updateItem(
 
 }}
 
-className={
+className={`
+h-5
+w-5
+rounded-md
+border
 
+${
 i < item.progress
-
 ?
-"h-5 w-5 rounded-md"
+"bg-[#8CCBFF] border-[#8CCBFF]"
 :
-"h-5 w-5 rounded-md"
-
+"bg-white border-gray-300"
 }
+
+`}
 
 
 />
