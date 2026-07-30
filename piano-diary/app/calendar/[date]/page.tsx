@@ -540,10 +540,10 @@ return(
 <main className="
 min-h-screen
 bg-[#F7F8FC]
-p-6
+px-4
+py-5
 text-black
 ">
-
 
 <div className="
 mx-auto
@@ -571,8 +571,8 @@ shadow
 
 
 <h1 className="
-mt-6
-text-3xl
+mt-5
+text-2xl
 font-bold
 ">
 
@@ -583,7 +583,7 @@ font-bold
 mt-6
 rounded-3xl
 bg-white
-p-5
+p-4
 shadow-sm
 ">
 
@@ -672,9 +672,12 @@ loadAcademyTime();
 
 className="
 ml-auto
-mt-1
-text-sm
-text-red-400
+h-8
+w-8
+rounded-full
+bg-gray-100
+text-gray-400
+text-lg
 "
 >
 ×
@@ -824,9 +827,9 @@ records.map(record=>(
 key={record.id}
 
 className="
-rounded-[30px]
+rounded-[28px]
 bg-white
-p-6
+p-5
 shadow-sm
 "
 
@@ -1031,9 +1034,9 @@ className={
 i < item.progress
 
 ?
-"h-5 w-5 rounded-md bg-[#8CCBFF]"
+"h-5 w-5 rounded-md"
 :
-"h-5 w-5 rounded-md bg-gray-200"
+"h-5 w-5 rounded-md"
 
 }
 
@@ -1079,11 +1082,11 @@ setOpen(true);
 }}
 
 className="
-mt-5
+mt-4
 w-full
 rounded-2xl
 bg-[#EEF8FF]
-p-4
+p-3
 text-[#4DA3FF]
 font-bold
 "
@@ -1154,12 +1157,12 @@ items-end
 w-full
 rounded-t-[35px]
 bg-white
-p-7
+p-5
 ">
 
 
 <h2 className="
-text-xl
+text-lg
 font-bold
 ">
 
@@ -1295,7 +1298,7 @@ relative
 w-full
 rounded-t-[35px]
 bg-white
-p-7
+p-5
 ">
 
 
@@ -1439,7 +1442,7 @@ items-end
 w-full
 rounded-t-[35px]
 bg-white
-p-7
+p-5
 ">
 
 
