@@ -678,6 +678,7 @@ setAcademyTime(null);
 }}
 
 className="
+m1-auto
 mt-1
 text-sm
 text-red-400
