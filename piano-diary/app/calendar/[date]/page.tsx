@@ -601,14 +601,6 @@ font-bold
 academyData && academyTime !== null ?
 
 <div
-onClick={()=>{
-
-setStartTime(academyData.start_time);
-setEndTime(academyData.end_time);
-setAcademyOpen(true);
-
-}}
-
 className="
 mt-3
 font-bold
@@ -675,7 +667,7 @@ if(error){
 
 setAcademyData(null);
 setAcademyTime(null);
-
+loadAcademyTime();
 }}
 
 className="
