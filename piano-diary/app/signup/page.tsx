@@ -136,7 +136,6 @@ bg-[#8CCBFF]
 p-4
 text-white
 font-bold
-text-black
 "
 
 >
