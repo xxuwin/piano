@@ -22,7 +22,7 @@ const [academyDates,setAcademyDates]=useState<string[]>([]);
   const [user,setUser]=useState<any>(null);
   const [academyGraph,setAcademyGraph]=useState<any[]>([]);
   const [selectedGraph,setSelectedGraph]=useState<number | null>(null);
-  
+  const [hoverGraph,setHoverGraph]=useState<number | null>(null);
   async function loadAcademyGraph(){
 
 const user_id = localStorage.getItem("user_id");
@@ -757,21 +757,41 @@ font-bold
 </h2>
 
 
+<div className="
+mt-8
+rounded-[32px]
+bg-white
+p-6
+shadow-sm
+">
+
+<h2 className="
+font-bold
+">
+🎹 최근 7일 학원 시간
+</h2>
+
+
 <div
 className="
 mt-6
 flex
 h-32
 items-end
-gap-1
+gap-2
 "
-onClick={()=>{
-setSelectedGraph(null);
-}}
 >
 
 {
-academyGraph.map((item,index)=>(
+academyGraph.map((item,index)=>{
+
+
+const show =
+selectedGraph === index ||
+hoverGraph === index;
+
+
+return(
 
 <div
 key={index}
@@ -779,29 +799,20 @@ className="
 relative
 flex-1
 flex
-justify-center
-items-end
-group
+flex-col
+items-center
+justify-end
 "
-onClick={(e)=>{
-e.stopPropagation();
-setSelectedGraph(
-selectedGraph===index
-?
-null
-:
-index
-);
-}}
 >
 
+
+{
+show &&
 
 <div
 className="
 absolute
--bottom-8
-left-1/2
--translate-x-1/2
+-bottom-10
 rounded-lg
 bg-black
 px-2
@@ -809,66 +820,68 @@ py-1
 text-xs
 text-white
 whitespace-nowrap
-opacity-0
-group-hover:opacity-100
-transition
-pointer-events-none
+z-10
 "
 >
+{item.date}
+<br/>
 {item.minutes}분
 </div>
+
+}
 
 
 
 <button
 
+onMouseEnter={()=>
+setHoverGraph(index)
+}
+
+onMouseLeave={()=>
+setHoverGraph(null)
+}
+
+onClick={()=>{
+
+if(selectedGraph===index){
+
+setSelectedGraph(null);
+
+}else{
+
+setSelectedGraph(index);
+
+}
+
+}}
+
 className="
 w-8
 rounded-t-xl
 bg-[#8CCBFF]
+transition
 "
 
 style={{
 height:
-`${Math.max(item.minutes / 5,5)}px`
+`${Math.max(item.minutes / 5,8)}px`
 }}
 
->
+/>
 
-</button>
-
-
-{
-selectedGraph===index &&
-
-<div
-className="
-md:hidden
-absolute
--bottom-8
-left-1/2
--translate-x-1/2
-rounded-lg
-bg-black
-px-2
-py-1
-text-xs
-text-white
-whitespace-nowrap
-"
->
-
-{item.minutes}분
 
 </div>
+
+
+)
+
+})
 
 }
 
 
 </div>
-
-))
-}
 
 
 </div>
