@@ -757,41 +757,19 @@ font-bold
 </h2>
 
 
-<div className="
-mt-8
-rounded-[32px]
-bg-white
-p-6
-shadow-sm
-">
-
-<h2 className="
-font-bold
-">
-🎹 최근 7일 학원 시간
-</h2>
-
-
 <div
 className="
 mt-6
 flex
-h-32
+h-40
 items-end
+justify-between
 gap-2
 "
 >
 
 {
-academyGraph.map((item,index)=>{
-
-
-const show =
-selectedGraph === index ||
-hoverGraph === index;
-
-
-return(
+academyGraph.map((item,index)=>(
 
 <div
 key={index}
@@ -802,17 +780,18 @@ flex
 flex-col
 items-center
 justify-end
+group
 "
 >
 
 
 {
-show &&
+(selectedGraph === index || hoverGraph === index) &&
 
 <div
 className="
 absolute
--bottom-10
+-bottom-8
 rounded-lg
 bg-black
 px-2
@@ -823,13 +802,10 @@ whitespace-nowrap
 z-10
 "
 >
-{item.date}
-<br/>
 {item.minutes}분
 </div>
 
 }
-
 
 
 <button
@@ -842,25 +818,21 @@ onMouseLeave={()=>
 setHoverGraph(null)
 }
 
-onClick={()=>{
-
-if(selectedGraph===index){
-
-setSelectedGraph(null);
-
-}else{
-
-setSelectedGraph(index);
-
+onClick={()=>
+setSelectedGraph(
+selectedGraph === index
+?
+null
+:
+index
+)
 }
-
-}}
 
 className="
 w-8
 rounded-t-xl
 bg-[#8CCBFF]
-transition
+hover:opacity-80
 "
 
 style={{
@@ -868,28 +840,35 @@ height:
 `${Math.max(item.minutes / 5,8)}px`
 }}
 
+
 />
+
+
+<p className="
+mt-3
+text-[11px]
+text-gray-400
+"
+>
+
+{
+String(item.date).slice(5).replace("-",".")
+}
+
+</p>
+
 
 
 </div>
 
 
-)
-
-})
-
+))
 }
 
 
 </div>
 
-
 </div>
-
-
-</div>
-
-
 
 </div>
 {
