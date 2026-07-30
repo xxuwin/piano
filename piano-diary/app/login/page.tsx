@@ -120,6 +120,7 @@ w-full
 rounded-xl
 border
 p-4
+text-black
 "
 
 />
