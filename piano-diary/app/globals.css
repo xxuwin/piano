@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "Esamanru";
+  src: url("./fonts/esamanru Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  font-family: "Esamanru", sans-serif;
+}
+
 @import "tailwindcss";
 
 :root {
