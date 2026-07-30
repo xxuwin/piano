@@ -164,11 +164,13 @@ async function loadAcademyTime(){
     .select("*")
     .eq("date",date)
     .eq("user_id",user.id)
-    .single();
+    .limit(1)
+    .maybeSingle();
 
 
   if(error){
 
+    console.log(error);
     setAcademyData(null);
     return;
 
@@ -176,7 +178,12 @@ async function loadAcademyTime(){
 
 
   setAcademyData(data);
-setAcademyTime(data.minutes);
+
+  if(data){
+    setAcademyTime(data.minutes);
+  }else{
+    setAcademyTime(null);
+  }
 
 }
 
@@ -626,16 +633,14 @@ const {error}=await supabase
 
 
 if(error){
-
-alert(error.message);
-return;
-
+  alert(error.message);
+  return;
 }
 
 
 setAcademyData(null);
 setAcademyTime(null);
-
+loadAcademyTime();
 }}
 className="
 mt-3
