@@ -615,6 +615,27 @@ text-[#4DA3FF]
 <p>
 ⏱ {academyData.start_time} ~ {academyData.end_time}
 </p>
+<button
+onClick={async()=>{
+
+await supabase
+.from("academy_time")
+.delete()
+.eq("id", academyData.id)
+.eq("user_id", user.id);
+
+setAcademyData(null);
+setAcademyTime(null);
+
+}}
+className="
+mt-3
+text-sm
+text-red-400
+"
+>
+×
+</button>
 
 <p className="
 mt-2
