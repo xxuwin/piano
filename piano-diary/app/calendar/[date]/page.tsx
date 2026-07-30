@@ -617,15 +617,47 @@ text-[#4DA3FF]
 
 >
 
-<div>
+<div
+className="
+mt-3
+font-bold
+text-[#4DA3FF]
+flex
+justify-between
+items-start
+"
+>
+
+<div
+onClick={()=>{
+
+setStartTime(academyData.start_time);
+setEndTime(academyData.end_time);
+setAcademyOpen(true);
+
+}}
+
+className="cursor-pointer"
+>
 
 <p>
 ⏱ {academyData.start_time} ~ {academyData.end_time}
 </p>
-<button
-onClick={async(e)=>{
 
-  e.stopPropagation();
+<p className="
+mt-2
+text-sm
+text-gray-400
+">
+{Math.floor(academyData.minutes / 60)} 시간{" "}
+{academyData.minutes % 60} 분
+</p>
+
+</div>
+
+
+<button
+onClick={async()=>{
 
 const {error}=await supabase
 .from("academy_time")
@@ -635,17 +667,18 @@ const {error}=await supabase
 
 
 if(error){
-  alert(error.message);
-  return;
+ alert(error.message);
+ return;
 }
 
 
 setAcademyData(null);
 setAcademyTime(null);
-loadAcademyTime();
+
 }}
+
 className="
-mt-3
+mt-1
 text-sm
 text-red-400
 "
@@ -653,16 +686,6 @@ text-red-400
 ×
 </button>
 
-<p className="
-mt-2
-text-sm
-text-gray-400
-">
-
-{Math.floor(academyData.minutes / 60)} 시간{" "}
-{academyData.minutes % 60} 분
-
-</p>
 
 </div>
 
