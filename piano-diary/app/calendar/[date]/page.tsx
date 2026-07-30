@@ -618,11 +618,20 @@ text-[#4DA3FF]
 <button
 onClick={async()=>{
 
-await supabase
+const {error}=await supabase
 .from("academy_time")
 .delete()
 .eq("id", academyData.id)
 .eq("user_id", user.id);
+
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
 
 setAcademyData(null);
 setAcademyTime(null);
