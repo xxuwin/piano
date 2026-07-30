@@ -755,23 +755,34 @@ font-bold
 </h2>
 
 
-<div className="
+<div
+className="
 mt-6
 flex
 h-32
 items-end
-gap-3
-">
-
+justify-center
+gap-4
+"
+>
 
 {
 academyGraph.map((item,index)=>(
 
-
 <div
 key={index}
 className="
-flex-1
+group
+relative
+flex
+h-full
+items-end
+"
+>
+
+<div
+className="
+w-3
 rounded-t-xl
 bg-[#8CCBFF]
 "
@@ -782,9 +793,32 @@ height:
 />
 
 
+<div
+className="
+absolute
+-bottom-8
+left-1/2
+hidden
+-translate-x-1/2
+rounded-lg
+bg-black
+px-2
+py-1
+text-xs
+text-white
+group-hover:block
+"
+>
+
+{item.minutes}분
+
+</div>
+
+
+</div>
+
 ))
 }
-
 
 </div>
 
