@@ -21,6 +21,7 @@ const [academyDates,setAcademyDates]=useState<string[]>([]);
   const [calendarDate,setCalendarDate]=useState(new Date(2026,7,1));
   const [user,setUser]=useState<any>(null);
   const [academyGraph,setAcademyGraph]=useState<any[]>([]);
+  const [selectedGraph,setSelectedGraph]=useState<number | null>(null);
   async function loadAcademyGraph(){
 
 const user_id = localStorage.getItem("user_id");
@@ -772,7 +773,6 @@ academyGraph.map((item,index)=>(
 <div
 key={index}
 className="
-group
 relative
 flex
 h-full
@@ -780,25 +780,15 @@ items-end
 "
 >
 
-<div
-className="
-w-3
-rounded-t-xl
-bg-[#8CCBFF]
-"
-style={{
-height:
-`${Math.max(item.minutes / 5, 5)}px`
-}}
-/>
 
+{
+selectedGraph === index &&
 
 <div
 className="
 absolute
--bottom-8
+bottom-[-32px]
 left-1/2
-hidden
 -translate-x-1/2
 rounded-lg
 bg-black
@@ -806,13 +796,32 @@ px-2
 py-1
 text-xs
 text-white
-group-hover:block
+whitespace-nowrap
 "
 >
-
 {item.minutes}분
-
 </div>
+
+}
+
+
+
+<button
+
+onClick={()=>setSelectedGraph(index)}
+
+className="
+w-3
+rounded-t-xl
+bg-[#8CCBFF]
+"
+
+style={{
+height:
+`${Math.max(item.minutes / 5,5)}px`
+}}
+
+/>
 
 
 </div>
