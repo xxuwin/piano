@@ -764,7 +764,7 @@ flex
 h-32
 items-end
 justify-center
-gap-4
+gap-2
 "
 >
 
@@ -811,7 +811,7 @@ whitespace-nowrap
 onClick={()=>setSelectedGraph(index)}
 
 className="
-w-4
+w-6
 rounded-t-xl
 bg-[#8CCBFF]
 "
