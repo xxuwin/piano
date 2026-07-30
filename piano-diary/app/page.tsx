@@ -336,7 +336,7 @@ items-center
 text-3xl
 font-bold
 ">
-🎹 Piano Diary
+Piano Diary
 </h1>
 
 
@@ -373,7 +373,7 @@ mt-2
 text-gray-400
 ">
 
-나의 피아노 성장 기록
+드가자 대학으로
 
 </p>
 
@@ -463,7 +463,7 @@ font-bold
 
 >
 
-🎓 {examTitle}
+📍︎ {examTitle}
 
 </p>
 
@@ -504,7 +504,7 @@ text-left
 
 >
 
-📅 {examDate}
+{examDate}
 
 </button>
 
@@ -566,7 +566,7 @@ text-xl
 font-bold
 ">
 
-📅 {year}년 {month}월
+{year} 년 {month} 월
 
 </h2>
 
@@ -753,7 +753,7 @@ shadow-sm
 <h2 className="
 font-bold
 ">
-🎹 최근 7일 학원 시간
+MINUTES
 </h2>
 
 
