@@ -504,7 +504,7 @@ text-left
 
 >
 
-{examDate}
+{examDate.replaceAll("-", ".")}
 
 </button>
 
