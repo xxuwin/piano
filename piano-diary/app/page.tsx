@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabase";
 
-
 export default function Home() {
 
   const router = useRouter();
@@ -21,6 +20,70 @@ const [academyDates,setAcademyDates]=useState<string[]>([]);
   const [dateOpen,setDateOpen]=useState(false);
   const [calendarDate,setCalendarDate]=useState(new Date(2026,7,1));
   const [user,setUser]=useState<any>(null);
+  const [academyGraph,setAcademyGraph]=useState<any[]>([]);
+  async function loadAcademyGraph(){
+
+const user_id = localStorage.getItem("user_id");
+
+if(!user_id) return;
+
+
+const today = new Date();
+
+const dates=[];
+
+
+for(let i=6;i>=0;i--){
+
+const d=new Date();
+
+d.setDate(today.getDate()-i);
+
+
+const date =
+`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+
+
+dates.push(date);
+
+}
+
+
+
+const {data,error}=await supabase
+.from("academy_time")
+.select("*")
+.eq("user_id",user_id)
+.in("date",dates);
+
+
+
+if(error){
+console.log(error);
+return;
+}
+
+
+
+const result=dates.map(date=>{
+
+const item=data?.find(
+(x)=>x.date===date
+);
+
+
+return{
+date,
+minutes:item?.minutes || 0
+};
+
+});
+
+
+setAcademyGraph(result);
+
+
+}
   
   useEffect(()=>{
 
@@ -109,6 +172,7 @@ user.id
 
 
     loadData();
+    loadAcademyGraph();
 
 
   },[user]);
@@ -676,7 +740,56 @@ bg-[#8CCBFF]
 </div>
 
 
+<div className="
+mt-8
+rounded-[32px]
+bg-white
+p-6
+shadow-sm
+">
 
+<h2 className="
+font-bold
+">
+🎹 최근 7일 학원 시간
+</h2>
+
+
+<div className="
+mt-6
+flex
+h-32
+items-end
+gap-3
+">
+
+
+{
+academyGraph.map((item,index)=>(
+
+
+<div
+key={index}
+className="
+flex-1
+rounded-t-xl
+bg-[#8CCBFF]
+"
+style={{
+height:
+`${Math.max(item.minutes / 5, 5)}px`
+}}
+/>
+
+
+))
+}
+
+
+</div>
+
+
+</div>
 
 
 
