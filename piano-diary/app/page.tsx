@@ -463,7 +463,7 @@ font-bold
 
 >
 
-📍︎ {examTitle}
+{examTitle}
 
 </p>
 
