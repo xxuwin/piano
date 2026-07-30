@@ -88,6 +88,7 @@ mt-4
 text-center
 text-2xl
 font-bold
+text-black
 ">
 Piano Diary
 </h2>
@@ -169,6 +170,7 @@ rounded-2xl
 border
 p-4
 font-bold
+text-black
 "
 
 >

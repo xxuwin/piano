@@ -82,6 +82,7 @@ flex
 items-center
 justify-center
 p-6
+text-black
 ">
 
 
@@ -97,6 +98,7 @@ max-w-md
 <h1 className="
 text-2xl
 font-bold
+text-black
 ">
 회원가입
 </h1>
@@ -134,6 +136,7 @@ bg-[#8CCBFF]
 p-4
 text-white
 font-bold
+text-black
 "
 
 >
