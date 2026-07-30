@@ -623,7 +623,9 @@ text-[#4DA3FF]
 ⏱ {academyData.start_time} ~ {academyData.end_time}
 </p>
 <button
-onClick={async()=>{
+onClick={async(e)=>{
+
+  e.stopPropagation();
 
 const {error}=await supabase
 .from("academy_time")
