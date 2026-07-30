@@ -22,6 +22,7 @@ const [academyDates,setAcademyDates]=useState<string[]>([]);
   const [user,setUser]=useState<any>(null);
   const [academyGraph,setAcademyGraph]=useState<any[]>([]);
   const [selectedGraph,setSelectedGraph]=useState<number | null>(null);
+  
   async function loadAcademyGraph(){
 
 const user_id = localStorage.getItem("user_id");
@@ -774,8 +775,9 @@ academyGraph.map((item,index)=>(
 key={index}
 className="
 relative
+flex-1
 flex
-h-full
+justify-center
 items-end
 "
 >
@@ -787,9 +789,7 @@ selectedGraph === index &&
 <div
 className="
 absolute
-bottom-[-32px]
-left-1/2
--translate-x-1/2
+-bottom-8
 rounded-lg
 bg-black
 px-2
@@ -811,7 +811,7 @@ whitespace-nowrap
 onClick={()=>setSelectedGraph(index)}
 
 className="
-w-3
+w-4
 rounded-t-xl
 bg-[#8CCBFF]
 "
