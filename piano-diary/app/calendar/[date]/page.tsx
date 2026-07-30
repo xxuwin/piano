@@ -985,7 +985,7 @@ text-sm
 text-gray-500
 whitespace-pre-wrap
 ">
-📝 {item.memo}
+{item.memo}
 </p>
 
 )
