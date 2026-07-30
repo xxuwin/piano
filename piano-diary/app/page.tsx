@@ -763,9 +763,11 @@ mt-6
 flex
 h-32
 items-end
-justify-center
-gap-2
+gap-1
 "
+onClick={()=>{
+setSelectedGraph(null);
+}}
 >
 
 {
@@ -779,17 +781,27 @@ flex-1
 flex
 justify-center
 items-end
+group
 "
+onClick={(e)=>{
+e.stopPropagation();
+setSelectedGraph(
+selectedGraph===index
+?
+null
+:
+index
+);
+}}
 >
 
-
-{
-selectedGraph === index &&
 
 <div
 className="
 absolute
 -bottom-8
+left-1/2
+-translate-x-1/2
 rounded-lg
 bg-black
 px-2
@@ -797,21 +809,21 @@ py-1
 text-xs
 text-white
 whitespace-nowrap
+opacity-0
+group-hover:opacity-100
+transition
+pointer-events-none
 "
 >
 {item.minutes}분
 </div>
 
-}
-
 
 
 <button
 
-onClick={()=>setSelectedGraph(index)}
-
 className="
-w-6
+w-8
 rounded-t-xl
 bg-[#8CCBFF]
 "
@@ -821,13 +833,43 @@ height:
 `${Math.max(item.minutes / 5,5)}px`
 }}
 
-/>
+>
+
+</button>
+
+
+{
+selectedGraph===index &&
+
+<div
+className="
+md:hidden
+absolute
+-bottom-8
+left-1/2
+-translate-x-1/2
+rounded-lg
+bg-black
+px-2
+py-1
+text-xs
+text-white
+whitespace-nowrap
+"
+>
+
+{item.minutes}분
+
+</div>
+
+}
 
 
 </div>
 
 ))
 }
+
 
 </div>
 
