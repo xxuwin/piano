@@ -121,6 +121,7 @@ rounded-xl
 border
 p-4
 text-black
+placeholder:text-black
 "
 
 />
