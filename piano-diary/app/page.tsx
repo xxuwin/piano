@@ -11,7 +11,7 @@ export default function Home() {
 
 
   const [eventDates,setEventDates]=useState<string[]>([]);
-
+const [academyDates,setAcademyDates]=useState<string[]>([]);
 
   const [examDate,setExamDate]=useState("");
 
@@ -46,6 +46,17 @@ setUser({
 
 
     async function loadData(){
+
+      const { data: academyData, error: academyError } = await supabase
+  .from("academy_time")
+  .select("date")
+  .eq("user_id", user.id);
+
+if (!academyError && academyData) {
+  setAcademyDates(
+    academyData.map(item => item.date)
+  );
+}
 
 
       const {data:eventData,error:eventError}=await supabase
@@ -547,9 +558,16 @@ text-sm
 "금",
 "토",
 ...calendarDays
+].map((day,index)=>{
 
-].map((day,index)=>(
+const currentDate =
+typeof day === "number"
+?
+`${year}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}`
+:
+"";
 
+return(
 
 <button
 
@@ -584,14 +602,26 @@ typeof day === "number" &&
 year === new Date().getFullYear() &&
 month === new Date().getMonth()+1 &&
 day === new Date().getDate()
+
 ?
+
 "text-[#8CCBFF] font-bold"
+
 :
+
+academyDates.includes(currentDate)
+
+?
+
+"text-gray-300"
+
+:
+
 ""
+
 }
 `}
 >
-
 {day}
 
 </span>
@@ -631,7 +661,8 @@ bg-[#8CCBFF]
 </button>
 
 
-))
+);
+})
 
 
 }
