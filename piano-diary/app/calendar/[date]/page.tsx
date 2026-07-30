@@ -848,7 +848,7 @@ shadow-sm
     text-xl
     font-bold
     ">
-      🎼 {record.song}
+    {record.song}
     </h2>
 
 
@@ -972,7 +972,7 @@ items-center
 font-bold
 ">
 
-♩={item.tempo}
+♩ {item.tempo}
 
 </p>
 
@@ -1555,7 +1555,7 @@ value={t}
 
 >
 
-♩={t}
+♩ {t}
 
 </option>
 
