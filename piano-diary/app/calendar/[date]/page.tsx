@@ -657,7 +657,8 @@ text-gray-400
 
 
 <button
-onClick={async()=>{
+onClick={async(e)=>{
+  e.stopPropagation();
 
 const {error}=await supabase
 .from("academy_time")
@@ -678,7 +679,7 @@ setAcademyTime(null);
 }}
 
 className="
-m1-auto
+ml-auto
 mt-1
 text-sm
 text-red-400
